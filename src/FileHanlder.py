@@ -1,4 +1,4 @@
-
+import re
 
 def class Fileloader:
     def load(filename):
