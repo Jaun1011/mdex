@@ -1,26 +1,29 @@
 import re
+import sys
 
-def main()
-    value = loadFile("../res/markdown.md")
-    lines = toLines(value)
-    res = null
-    for line in lines:
-        title = getTitle(line)
-        if not title:
-            res.append(title)
-    print res
 
 def loadFile(filename):
-    f = open(filename, "r")
-    return f.read()
+    return open(filename, "r").read()
 
 def toLines(value):
-    return value.split('\n', 1 )
+    return value.split('\n')
 
-def getTitle(line):
+def addTitle(line, titles):
     if len(line) > 0 and line[0] == '#':
-        return line
-    return False
+        titles.append(line)
+    return titles
+
+def getTitles(lines, titles):
+    if not lines:
+        return titles
+    titles = addTitle(lines[0], titles)
+    lines.pop(0)
+    return getTitles(lines, titles)
+
+def main(argv):
+    content = loadFile('../res/markdown.md')
+    lines = toLines(content)
+    print getTitles(lines[:], [])
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
