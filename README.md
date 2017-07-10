@@ -1,2 +1,5 @@
 # mdex
-mdex is a programm which can extends your markdown file with an index.
+mdex is a program which can extends your markdown file with an index.
+
+## Intention
+I want to learn how to programm functional in python
