@@ -1,5 +1,4 @@
 import re
-import sys
 
 def loadFile(filename):
     return open(filename, 'r').read()
